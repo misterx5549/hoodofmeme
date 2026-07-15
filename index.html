@@ -1,7 +1,9 @@
+<!doctype html>
 <!-- HOOD OF MEME — $HOME — army in the meme forest -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>🏹 HOOD OF MEME — $HOME 🐸</title>
+<link rel="icon" type="image/png" href="images/coin.png">
 <style>
   :root{
     --green:#ccff00;
@@ -187,15 +189,15 @@
 <img src="images/hero-pepe.png" alt="Hood Pepe" style="width:130px;display:block;margin:24px auto -50px;position:relative;z-index:3;border-radius:50%;border:3px solid var(--green);box-shadow:0 0 22px var(--green);animation:float 4s ease-in-out infinite">
 <div class="ca" style="padding-top:56px">
   <small>Contract Address</small>
-  <div class="addr" id="addr">SOON™ — paste CA here, ser</div>
+  <div class="addr" id="addr">0xdb0c60375be0031b2817fd0c9d178ba3a85b6666</div>
   <button class="copybtn" onclick="copyCA()">📋 COPY (or you get robbed)</button>
 </div>
 
 <!-- BUY -->
 <div class="buys">
-  <a class="buy" href="#" target="_blank">🚀 BUY NOW</a>
-  <a class="buy" href="#" target="_blank">📊 CHART</a>
-  <a class="buy" href="#" target="_blank">🦄 DEX</a>
+  <a class="buy" href="https://dexscreener.com/search?q=0xdb0c60375be0031b2817fd0c9d178ba3a85b6666" target="_blank">🚀 BUY NOW</a>
+  <a class="buy" href="https://dexscreener.com/search?q=0xdb0c60375be0031b2817fd0c9d178ba3a85b6666" target="_blank">📊 CHART</a>
+  <a class="buy" href="https://dexscreener.com/search?q=0xdb0c60375be0031b2817fd0c9d178ba3a85b6666" target="_blank">🦄 DEX</a>
 </div>
 
 <!-- LORE -->
@@ -245,7 +247,7 @@
   <h2 style="color:var(--green2);text-shadow:0 0 10px var(--green),2px 2px 0 #000">🌲 join the hoods</h2>
   <a href="https://x.com/Hoodofmeme1" target="_blank">𝕏 / TWITTER</a>
   <a href="#" target="_blank">✈️ TELEGRAM (soon)</a>
-  <a href="#" target="_blank">🦄 DEXSCREENER (soon)</a>
+  <a href="https://dexscreener.com/search?q=0xdb0c60375be0031b2817fd0c9d178ba3a85b6666" target="_blank">🦄 DEXSCREENER</a>
 </section>
 
 <footer>
@@ -256,12 +258,23 @@
 <div class="toast" id="toast">COPIED, GO FORTH 🏹</div>
 
 <script>
-  // click-to-copy CA
+  // click-to-copy CA (works even on file:// where the async clipboard API is blocked)
+  var CA="0xdb0c60375be0031b2817fd0c9d178ba3a85b6666";
   function copyCA(){
-    var t=document.getElementById('addr').innerText;
-    navigator.clipboard && navigator.clipboard.writeText(t);
-    var el=document.getElementById('toast');el.classList.add('show');
-    setTimeout(function(){el.classList.remove('show')},1600);
+    var done=function(){
+      var el=document.getElementById('toast');el.classList.add('show');
+      setTimeout(function(){el.classList.remove('show')},1600);
+    };
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(CA).then(done,fallback);
+    } else { fallback(); }
+    function fallback(){
+      var ta=document.createElement('textarea');
+      ta.value=CA;ta.style.position='fixed';ta.style.opacity='0';
+      document.body.appendChild(ta);ta.focus();ta.select();
+      try{document.execCommand('copy');}catch(e){}
+      document.body.removeChild(ta);done();
+    }
   }
 
   // floating meme junk
@@ -291,4 +304,6 @@
 
   // press H to make it rain
   document.addEventListener('keydown',function(e){
-    if(e.key.toLowerCase()==='h'){for(var i=0;i<25;i++)setTim
+    if(e.key.toLowerCase()==='h'){for(var i=0;i<25;i++)setTimeout(spawn,i*40);}
+  });
+</script>
