@@ -1,0 +1,294 @@
+<!-- HOOD OF MEME — $HOOD — army in the meme forest -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>🏹 HOOD OF MEME — $HOOD 🐸</title>
+<style>
+  :root{
+    --green:#8fff00;
+    --green2:#39ff14;
+    --dark:#04140a;
+    --dark2:#0a2412;
+    --gold:#e8b923;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:
+      radial-gradient(circle at 20% 10%, #123 0%, transparent 40%),
+      radial-gradient(circle at 80% 90%, #0a2412 0%, transparent 45%),
+      #04140a;
+    color:var(--green);
+    font-family:"Comic Sans MS","Trebuchet MS",system-ui,sans-serif;
+    overflow-x:hidden;
+    cursor: crosshair;
+    min-height:100vh;
+  }
+  /* subtle forest scanlines */
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;
+    background:repeating-linear-gradient(0deg, rgba(0,0,0,.12) 0 1px, transparent 1px 3px);
+    mix-blend-mode:overlay;opacity:.5;
+  }
+
+  /* ---------- TOP MARQUEE ---------- */
+  .marquee{
+    background:var(--green);color:#04140a;font-weight:900;
+    white-space:nowrap;overflow:hidden;border-bottom:3px solid #000;
+    text-transform:uppercase;letter-spacing:1px;
+    position:sticky;top:0;z-index:500;
+  }
+  .marquee span{display:inline-block;padding:8px 0;animation:scroll 18s linear infinite}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* ---------- HERO (full-width banner) ---------- */
+  .hero{
+    position:relative;width:100%;min-height:min(56vw,560px);
+    background:#000 center/cover no-repeat;
+    display:flex;align-items:center;justify-content:flex-end;
+    padding:20px clamp(16px,5vw,70px);border-bottom:3px solid var(--green);
+    overflow:hidden;
+  }
+  .hero .banner{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+  .hero .htext{position:relative;z-index:2;text-align:right;max-width:52%}
+  .title{
+    font-size:clamp(40px,9vw,110px);font-weight:900;line-height:.85;
+    color:var(--green2);
+    text-shadow:0 0 8px var(--green),0 0 24px var(--green),4px 4px 0 #000;
+    animation:wobble 3s ease-in-out infinite;
+    letter-spacing:-2px;margin:0;
+  }
+  .title .b{color:var(--gold);text-shadow:0 0 10px var(--gold),3px 3px 0 #000}
+  @keyframes wobble{0%,100%{transform:rotate(-1.5deg)}50%{transform:rotate(1.5deg)}}
+  .sub{font-size:clamp(14px,2.4vw,26px);margin-top:12px;color:#fff;text-shadow:2px 2px 0 #000}
+  .blink{animation:blink 1s steps(2) infinite}
+  @keyframes blink{50%{opacity:0}}
+  /* spinning gold coin */
+  .coin{
+    width:clamp(90px,15vw,180px);margin:14px 0 0 auto;display:block;
+    filter:drop-shadow(0 0 18px var(--gold));
+    animation:spin 4s linear infinite;
+  }
+  @keyframes spin{0%{transform:rotateY(0)}100%{transform:rotateY(360deg)}}
+  @media(max-width:640px){
+    .hero{justify-content:center;min-height:auto;padding:24px 14px;flex-direction:column}
+    .hero .banner{opacity:.35}
+    .hero .htext{max-width:100%;text-align:center}
+    .coin{margin:14px auto 0}
+  }
+  @keyframes float{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-18px) rotate(1deg)}}
+  .imgslot{
+    display:flex;align-items:center;justify-content:center;text-align:center;
+    background:repeating-linear-gradient(45deg,#0a2412,#0a2412 10px,#08200f 10px,#08200f 20px);
+    border:2px dashed var(--green);color:var(--green);font-size:13px;border-radius:12px;
+  }
+
+  /* ---------- CONTRACT BAR ---------- */
+  .ca{
+    max-width:760px;margin:22px auto;padding:14px;
+    border:3px solid var(--green);border-radius:14px;background:#07200f;
+    box-shadow:0 0 20px rgba(143,255,0,.35);text-align:center;
+  }
+  .ca small{color:#fff;opacity:.8;text-transform:uppercase;letter-spacing:2px}
+  .ca .addr{
+    font-family:monospace;font-size:clamp(11px,2.6vw,17px);color:var(--gold);
+    word-break:break-all;margin:6px 0;
+  }
+  .copybtn{
+    background:var(--gold);color:#000;border:2px solid #000;font-weight:900;
+    padding:10px 20px;border-radius:10px;cursor:pointer;text-transform:uppercase;
+    font-family:inherit;box-shadow:3px 3px 0 #000;transition:transform .08s;
+  }
+  .copybtn:active{transform:translate(3px,3px);box-shadow:0 0 0 #000}
+
+  /* ---------- BUY BUTTONS ---------- */
+  .buys{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:26px auto;max-width:820px;padding:0 12px}
+  .buy{
+    background:var(--green2);color:#04140a;font-weight:900;text-decoration:none;
+    padding:16px 26px;border-radius:14px;border:3px solid #000;font-size:20px;
+    text-transform:uppercase;box-shadow:5px 5px 0 #000;
+    animation:shake 6s ease-in-out infinite;
+  }
+  .buy:hover{background:var(--gold);animation:shake .3s infinite}
+  .buy:nth-child(2){animation-delay:1s}
+  .buy:nth-child(3){animation-delay:2s}
+  @keyframes shake{0%,92%,100%{transform:translate(0,0) rotate(0)}94%{transform:translate(-2px,1px) rotate(-2deg)}96%{transform:translate(2px,-1px) rotate(2deg)}98%{transform:translate(-1px,0) rotate(-1deg)}}
+
+  /* ---------- FLOATING JUNK ---------- */
+  .floater{position:fixed;z-index:50;font-size:38px;pointer-events:none;user-select:none;opacity:.9}
+
+  /* ---------- RANDOM SECTIONS (deliberately not a grid) ---------- */
+  section{max-width:900px;margin:40px auto;padding:0 16px}
+  .lore{
+    transform:rotate(-1.2deg);background:#0a2412;border:3px solid var(--green);
+    border-radius:16px;padding:24px;box-shadow:8px 8px 0 rgba(0,0,0,.5);
+  }
+  .lore h2{color:var(--gold);font-size:clamp(26px,6vw,44px);margin:0 0 10px;text-shadow:2px 2px 0 #000}
+  .lore p{color:#dfffd0;font-size:18px;line-height:1.5}
+
+  .tokeno{transform:rotate(1deg)}
+  .tokeno h2{font-size:clamp(26px,6vw,44px);color:var(--green2);text-shadow:0 0 10px var(--green),2px 2px 0 #000}
+  .tgrid{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;margin-top:16px}
+  .tcard{
+    background:#07200f;border:3px dashed var(--gold);border-radius:14px;padding:18px 22px;
+    min-width:150px;text-align:center;transform:rotate(var(--r,0deg));
+  }
+  .tcard b{display:block;font-size:30px;color:var(--gold)}
+  .tcard span{color:#fff;font-size:13px;text-transform:uppercase}
+
+  .how{transform:rotate(-.6deg)}
+  .how h2{color:var(--gold);font-size:clamp(26px,6vw,44px);text-shadow:2px 2px 0 #000}
+  .steps{list-style:none;padding:0;counter-reset:s}
+  .steps li{
+    counter-increment:s;background:#0a2412;border-left:6px solid var(--green);
+    margin:12px 0;padding:14px 16px 14px 54px;position:relative;border-radius:10px;color:#dfffd0;font-size:17px;
+  }
+  .steps li::before{
+    content:counter(s);position:absolute;left:12px;top:50%;transform:translateY(-50%);
+    background:var(--green);color:#000;font-weight:900;width:30px;height:30px;border-radius:50%;
+    display:grid;place-items:center;border:2px solid #000;
+  }
+
+  /* ---------- SOCIALS ---------- */
+  .socials{text-align:center}
+  .socials a{
+    display:inline-block;margin:8px;padding:14px 24px;background:#000;color:var(--green2);
+    border:3px solid var(--green);border-radius:12px;text-decoration:none;font-weight:900;
+    font-size:20px;text-transform:uppercase;box-shadow:0 0 14px rgba(143,255,0,.5);transition:transform .1s;
+  }
+  .socials a:hover{transform:scale(1.1) rotate(-2deg);background:var(--green);color:#000}
+
+  /* ---------- MEME GALLERY ---------- */
+  .gallery{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+  .gallery .imgslot,.gallery img{width:200px;height:200px;object-fit:cover;border-radius:14px;border:3px solid var(--green);transform:rotate(var(--r,0deg))}
+
+  footer{text-align:center;padding:40px 12px;color:#5a8a4a;font-size:13px}
+  footer .dis{max-width:640px;margin:10px auto 0;opacity:.7;font-size:11px}
+
+  .toast{
+    position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(120px);
+    background:var(--gold);color:#000;font-weight:900;padding:14px 24px;border:3px solid #000;
+    border-radius:12px;z-index:9000;transition:transform .3s;text-transform:uppercase;
+  }
+  .toast.show{transform:translateX(-50%) translateY(0)}
+</style>
+
+<div class="marquee"><span>🏹 $HOOD ARMY RISING IN THE MEME FOREST &nbsp;•&nbsp; STEAL FROM WHALES, GIVE TO DEGENS &nbsp;•&nbsp; 1 $HOOD = 1 $HOOD &nbsp;•&nbsp; SHERWOOD IS NOT A PLACE IT'S A MINDSET &nbsp;•&nbsp; 🐸🏹 &nbsp;•&nbsp; 🏹 $HOOD ARMY RISING IN THE MEME FOREST &nbsp;•&nbsp; STEAL FROM WHALES, GIVE TO DEGENS &nbsp;•&nbsp; 1 $HOOD = 1 $HOOD &nbsp;•&nbsp; SHERWOOD IS NOT A PLACE IT'S A MINDSET &nbsp;•&nbsp; 🐸🏹 &nbsp;•&nbsp;</span></div>
+
+<div class="hero">
+  <img class="banner" src="images/banner.png" alt="Hood of Meme banner">
+  <div class="htext">
+    <h1 class="title">HOOD<br>OF <span class="b">MEME</span></h1>
+    <div class="sub">$HOOD 🐸🏹 the frog that shoots arrows at your <span class="blink">bags</span></div>
+    <img class="coin" src="images/coin.png" alt="$HOOD coin">
+  </div>
+</div>
+
+<!-- CONTRACT -->
+<img src="images/hero-pepe.png" alt="Hood Pepe" style="width:130px;display:block;margin:24px auto -50px;position:relative;z-index:3;border-radius:50%;border:3px solid var(--green);box-shadow:0 0 22px var(--green);animation:float 4s ease-in-out infinite">
+<div class="ca" style="padding-top:56px">
+  <small>Contract Address</small>
+  <div class="addr" id="addr">SOON™ — paste CA here, ser</div>
+  <button class="copybtn" onclick="copyCA()">📋 COPY (or you get robbed)</button>
+</div>
+
+<!-- BUY -->
+<div class="buys">
+  <a class="buy" href="#" target="_blank">🚀 BUY NOW</a>
+  <a class="buy" href="#" target="_blank">📊 CHART</a>
+  <a class="buy" href="#" target="_blank">🦄 DEX</a>
+</div>
+
+<!-- LORE -->
+<section>
+  <div class="lore">
+    <h2>📜 the legend of $HOOD</h2>
+    <p>Deep in the meme forest, where the WiFi is bad and the exits are worse, one frog put on a little green hat and decided the whales had eaten enough. He grabbed a bow. He grabbed an arrow. He grabbed absolutely zero financial advice.</p>
+    <p>They call him <b>Hood</b>. His army is you. We ride through Sherwood taking green candles from the rich and handing them to whoever's holding. No roadmap, no VCs, just vibes and a quiver full of hopium. 🏹🐸</p>
+  </div>
+</section>
+
+<!-- TOKENOMICS -->
+<section class="tokeno">
+  <h2>💰 tokenomics (trust me bro edition)</h2>
+  <div class="tgrid">
+    <div class="tcard" style="--r:-3deg"><b>1B</b><span>total supply</span></div>
+    <div class="tcard" style="--r:2deg"><b>0%</b><span>tax</span></div>
+    <div class="tcard" style="--r:-2deg"><b>🏹</b><span>Robinhood chain</span></div>
+    <div class="tcard" style="--r:3deg"><b>100%</b><span>to the hoods</span></div>
+  </div>
+</section>
+
+<!-- HOW TO BUY -->
+<section class="how">
+  <h2>🏹 how to join the army</h2>
+  <ol class="steps">
+    <li>Get a wallet. Phantom, MetaMask, whatever doesn't rug you.</li>
+    <li>Fund it and connect to the <b>Robinhood chain</b>.</li>
+    <li>Copy the CA above, paste into your DEX, swap for $HOOD.</li>
+    <li>Put on the green hat. You are now a hood. Welcome to Sherwood.</li>
+  </ol>
+</section>
+
+<!-- MEME GALLERY -->
+<section>
+  <h2 style="text-align:center;color:var(--gold);text-shadow:2px 2px 0 #000">🖼️ the meme armory</h2>
+  <div class="gallery">
+    <img src="images/meme1.png" style="--r:-3deg" onerror="this.outerHTML='&lt;div class=&quot;imgslot&quot; style=&quot;--r:-3deg&quot;&gt;images/meme1.png&lt;/div&gt;'">
+    <img src="images/meme2.png" style="--r:2deg" onerror="this.outerHTML='&lt;div class=&quot;imgslot&quot; style=&quot;--r:2deg&quot;&gt;images/meme2.png&lt;/div&gt;'">
+    <img src="images/meme3.png" style="--r:-2deg" onerror="this.outerHTML='&lt;div class=&quot;imgslot&quot; style=&quot;--r:-2deg&quot;&gt;images/meme3.png&lt;/div&gt;'">
+    <img src="images/meme4.png" style="--r:3deg" onerror="this.outerHTML='&lt;div class=&quot;imgslot&quot; style=&quot;--r:3deg&quot;&gt;images/meme4.png&lt;/div&gt;'">
+  </div>
+</section>
+
+<!-- SOCIALS -->
+<section class="socials">
+  <h2 style="color:var(--green2);text-shadow:0 0 10px var(--green),2px 2px 0 #000">🌲 join the hoods</h2>
+  <a href="https://x.com/Hoodofmeme1" target="_blank">𝕏 / TWITTER</a>
+  <a href="#" target="_blank">✈️ TELEGRAM (soon)</a>
+  <a href="#" target="_blank">🦄 DEXSCREENER (soon)</a>
+</section>
+
+<footer>
+  <div>🐸 $HOOD © forever — made in the meme forest 🏹</div>
+  <div class="dis">$HOOD is a memecoin with no intrinsic value or expectation of financial return. There is no formal team or roadmap. It's for entertainment. Do your own research. Not financial advice, ser.</div>
+</footer>
+
+<div class="toast" id="toast">COPIED, GO FORTH 🏹</div>
+
+<script>
+  // click-to-copy CA
+  function copyCA(){
+    var t=document.getElementById('addr').innerText;
+    navigator.clipboard && navigator.clipboard.writeText(t);
+    var el=document.getElementById('toast');el.classList.add('show');
+    setTimeout(function(){el.classList.remove('show')},1600);
+  }
+
+  // floating meme junk
+  var junk=['🐸','🏹','💰','🎯','🌲','🪙','🤑','🎩','💎','🍃'];
+  function spawn(){
+    var e=document.createElement('div');e.className='floater';
+    e.textContent=junk[Math.floor(Math.random()*junk.length)];
+    e.style.left=(Math.random()*95)+'vw';e.style.top='105vh';
+    e.style.fontSize=(24+Math.random()*40)+'px';
+    document.body.appendChild(e);
+    var dur=6000+Math.random()*6000, rot=(Math.random()*720-360);
+    e.animate([{transform:'translateY(0) rotate(0)'},{transform:'translateY(-120vh) rotate('+rot+'deg)'}],
+      {duration:dur,easing:'linear'});
+    setTimeout(function(){e.remove()},dur);
+  }
+  setInterval(spawn,900);
+
+  // arrow trail on click
+  document.addEventListener('click',function(ev){
+    var a=document.createElement('div');a.className='floater';a.textContent='🏹';
+    a.style.left=ev.clientX+'px';a.style.top=ev.clientY+'px';a.style.position='fixed';
+    document.body.appendChild(a);
+    a.animate([{transform:'scale(1) rotate(0)',opacity:1},{transform:'scale(2.4) rotate(45deg)',opacity:0}],
+      {duration:700});
+    setTimeout(function(){a.remove()},700);
+  });
+
+  // press H to make it rain
+  document.addEventListener('keydown',function(e){
+    if(e.key.toLowerCase()==='h'){for(var i=0;i<25;i++)setT
